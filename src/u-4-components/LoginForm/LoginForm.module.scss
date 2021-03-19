@@ -1,0 +1,83 @@
+.form_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 80px 80px 60px;
+    background-color: rgba(26, 26, 26, 0.8);
+
+    .header {
+        text-align: center;
+        width: 100%;
+
+        h1 {
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 100px;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 40vw;
+        }
+    }
+
+    .form {
+        width: 100%;
+
+        p {
+            font-size: 20px;
+            color: #fff;
+            margin: 0 0 20px 0;
+        }
+
+        form {
+            box-sizing: border-box;
+
+            .input {
+                min-height: 50px;
+                box-shadow: none;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                padding: 10px 15px;
+                background-color: transparent;
+                color: white;
+                transition: none;
+                width: 100%;
+                height: calc(2.25rem + 2px);
+                font-size: 1rem;
+                line-height: 1.5;
+                background-clip: padding-box;
+                border-radius: .25rem;
+            }
+
+            .form_btn_wrapper {
+                margin-bottom: 1rem;
+
+                .form_btn {
+                    cursor: pointer;
+                    font-size: 17px;
+                    font-weight: 600;
+                    border: 0;
+                    color: #fff;
+                    border-radius: 3px;
+                    background-color: #1fbe66;
+                    padding: 10px 36px;
+                    margin-bottom: 10px;
+                    width: 100%;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: #17a156;
+                        border-color: #17a156;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+.input_label {
+    width: 100%;
+}

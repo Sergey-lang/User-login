@@ -1,0 +1,9 @@
+.wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
+.headline {
+    text-align: center;
+    color: #181818;
+}
