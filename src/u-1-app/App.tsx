@@ -14,6 +14,7 @@ export const PATH = {
 }
 
 export const App: React.FC = () => {
+
     const isLoggedIn = useSelector(selectorIsLogged)
 
     const dispatch = useDispatch()

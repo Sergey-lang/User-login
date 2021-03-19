@@ -40,7 +40,8 @@ export const getAuthUserData = () => async (dispatch: ThunkDispatch<AppStateType
             dispatch(setAppStatus('failed'));
         }
     } catch (e) {
-
+        dispatch(setAppError(e.message))
+        dispatch(setAppStatus('failed'));
     }
 };
 
@@ -54,13 +55,15 @@ export const login = (clientId: number, email: string, password: string) =>
                 localStorage.setItem('refreshToken', res.data.data.refreshToken);
                 await dispatch(getAuthUserData());
                 dispatch(setIsLoggedIn(true));
+                dispatch(setAppError(''));
                 return
             } else {
                 dispatch(setAppStatus('failed'));
                 return
             }
         } catch (e) {
-
+            dispatch(setAppError(e.message))
+            dispatch(setAppStatus('failed'));
         }
     };
 
@@ -71,10 +74,12 @@ export const logout = () => async (dispatch: ThunkDispatch<AppStateType, unknown
         if (res.status === 200) {
             localStorage.clear()
             dispatch(setIsLoggedIn(false))
+            dispatch(setAppError(''))
             dispatch(setAppStatus('succeeded'));
         }
     } catch (e) {
-
+        dispatch(setAppError(e.message))
+        dispatch(setAppStatus('failed'));
     }
 }
 
