@@ -1,7 +1,12 @@
 import {ThunkDispatch} from 'redux-thunk';
 import {setAppError, setAppStatus} from '../../u-1-app/app-reducer';
-import {authAPI, UserType} from '../../u-2-api/auth-api';
+import {authAPI} from '../../u-2-api/auth-api';
 import {AppStateType} from '../../u-1-app/store';
+
+export type UserType = {
+    name: string,
+    email: string,
+}
 
 type ActionsType = ReturnType<typeof setAppStatus>
     | ReturnType<typeof setIsLoggedIn>

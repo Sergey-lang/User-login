@@ -8,24 +8,20 @@
     padding: 80px 80px 60px;
     background-color: rgba(26, 26, 26, 0.8);
 
-    .header {
+    .headline {
         text-align: center;
-        width: 100%;
 
-        h1 {
+        .headline_text {
             color: #fff;
             font-weight: 800;
-            margin-bottom: 100px;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 40vw;
+            margin-bottom: 80px;
         }
     }
 
     .form {
         width: 100%;
 
-        p {
+        .form_description {
             font-size: 20px;
             color: #fff;
             margin: 0 0 20px 0;
@@ -73,11 +69,21 @@
                 }
             }
         }
-
     }
 }
 
+@media screen and (max-width: 540px) {
+    .form_wrapper {
+        padding: 15% 15% 60px;
 
-.input_label {
-    width: 100%;
+        .headline {
+            .headline_text {
+                margin-bottom: 57px;
+            }
+        }
+
+        .form_description {
+            text-align: center;
+        }
+    }
 }

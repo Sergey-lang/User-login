@@ -47,38 +47,36 @@ export const LoginForm: React.FC<OtherProps> = ({callback}) => {
 
     const formik = useFormik({
         initialValues: {
-            clientId: 1,//
-            email: 'user@ozitag.com',//
-            password: 'user',//
+            clientId: 1,
+            email: 'user@ozitag.com',
+            password: 'user',
         },
         validate,
-        onSubmit: (values,{ setSubmitting }) => {
-
+        onSubmit: (values, {setSubmitting}) => {
             callback(values)
             setSubmitting(false)
         },
     });
 
-    const renderInput = (id: string, name: string, type: string, className: string, error: string | undefined, onChange: (e: ChangeEvent) => void, value: number | string, placeholder?:string) => {
-        return <SuperInputText
-            id={id}
-            name={name}
-            type={type}
-            className={className}
-            error={error}
-            onChange={onChange}
-            value={value}
-            placeholder={placeholder}
+    const renderInput = (id: string, name: string, type: string, className: string, error: string | undefined, onChange: (e: ChangeEvent) => void, value: number | string, placeholder?: string) => {
+        return <SuperInputText id={id}
+                               name={name}
+                               type={type}
+                               className={className}
+                               error={error}
+                               onChange={onChange}
+                               value={value}
+                               placeholder={placeholder}
         />
     }
 
     return (
         <div className={s.form_wrapper}>
-            <div className={s.header}>
-                <h1>FLy&TAG</h1>
+            <div className={s.headline}>
+                <h1 className={s.headline_text}>FLy&TAG</h1>
             </div>
             <div className={s.form}>
-                <p>Login into your account</p>
+                <p className={s.form_description}>Login into your account</p>
                 <form onSubmit={formik.handleSubmit}>
 
                     {renderInput('clientId', 'clientId', 'text', s.input, formik.errors.clientId, formik.handleChange, formik.values.clientId, 'Enter ID')}
@@ -87,9 +85,9 @@ export const LoginForm: React.FC<OtherProps> = ({callback}) => {
 
                     {renderInput('password', 'password', 'text', s.input, formik.errors.password, formik.handleChange, formik.values.password, 'Enter Password')}
 
-                   <div className={s.form_btn_wrapper}>
-                       <SuperButton type="submit" className={s.form_btn}>Log in</SuperButton>
-                   </div>
+                    <div className={s.form_btn_wrapper}>
+                        <SuperButton type="submit" className={s.form_btn}>Log in</SuperButton>
+                    </div>
                 </form>
             </div>
         </div>

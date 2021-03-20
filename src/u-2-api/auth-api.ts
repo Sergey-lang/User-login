@@ -1,10 +1,6 @@
 import {axiosInstance} from './api';
 import {AxiosResponse} from 'axios';
-
-export type UserType = {
-    name: string,
-    email: string,
-}
+import {UserType} from '../u-3-pages/LoginPage/auth-reducer';
 
 type LoginResponseType = {
     tokenType: string,

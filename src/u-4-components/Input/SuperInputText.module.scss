@@ -1,0 +1,20 @@
+@import "src/scss/variables";
+
+.input_wrapper {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+
+    .superInput {
+        outline: none;
+    }
+
+    .spanError {
+        padding-top: 5px;
+        color: $red;
+        font-size: 12px;
+        text-align: center;
+        font-weight: bold;
+    }
+}

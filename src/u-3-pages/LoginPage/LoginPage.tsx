@@ -4,10 +4,10 @@ import {selectorAppError, selectorIsLogged, selectorRequestStatus} from '../User
 import {FormValues, LoginForm} from '../../u-4-components/LoginForm/LoginForm';
 import {Redirect} from 'react-router-dom';
 import {login} from './auth-reducer';
+import Error from '../../u-4-components/Error/Error';
 import Preloader from '../../u-4-components/Preloader/Preloader';
 
-import s from './LoginPage.module.css'
-import Error from '../../u-4-components/Error/Error';
+import s from './LoginPage.module.scss'
 
 export const LoginPage: React.FC = () => {
     const status = useSelector(selectorRequestStatus)
@@ -29,10 +29,10 @@ export const LoginPage: React.FC = () => {
         <div className={s.wrapper}>
             {status === 'loading'
                 ? <Preloader/>
-                : <div>
+                : <>
                     <LoginForm callback={sentLoginData}/>
                     {error && <Error error={error}/>}
-                </div>
+                </>
             }
         </div>
     );

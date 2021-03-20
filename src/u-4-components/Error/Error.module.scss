@@ -1,16 +1,18 @@
+@import "src/scss/variables";
+
 .error_wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e96565;
+    border: 1px solid white;
     border-radius: 6px;
     max-width: 350px;
     margin: 0 auto;
     padding: 5px;
+
+    .error {
+        text-align: center;
+        color: $red;
+    }
 }
 
-.error {
-    text-align: center;
-    color: #e96565;
-    font-weight: 500;
-}

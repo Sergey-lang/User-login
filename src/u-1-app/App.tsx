@@ -14,7 +14,6 @@ export const PATH = {
 }
 
 export const App: React.FC = () => {
-
     const isLoggedIn = useSelector(selectorIsLogged)
 
     const dispatch = useDispatch()
@@ -22,7 +21,7 @@ export const App: React.FC = () => {
         if (localStorage.length) {
             dispatch(setIsLoggedIn(true))
         }
-    }, [isLoggedIn])
+    }, [isLoggedIn,dispatch])
 
     return (
         <div className={s.app}>
