@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const defaultOptions = {
-    withCredentials: false,
+    withCredentials: true,
     baseURL: 'https://tager.dev.ozitag.com',
     headers: {
         Accept: 'application/json',
