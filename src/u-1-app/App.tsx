@@ -18,7 +18,7 @@ export const App: React.FC = () => {
 
     const dispatch = useDispatch()
     useEffect(() => {
-        if (localStorage.length) {
+        if (localStorage.getItem('accessToken')) {
             dispatch(setIsLoggedIn(true))
         }
     }, [isLoggedIn,dispatch])

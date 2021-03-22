@@ -77,7 +77,8 @@ export const logout = () => async (dispatch: ThunkDispatch<AppStateType, unknown
     try {
         const res = await authAPI.logout()
         if (res.status === 200) {
-            localStorage.clear()
+            localStorage.removeItem('accessToken')
+            localStorage.removeItem('refreshToken')
             dispatch(setIsLoggedIn(false))
             dispatch(setAppError(''))
             dispatch(setAppStatus('succeeded'));
