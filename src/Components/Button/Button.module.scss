@@ -1,5 +1,3 @@
-@import "src/scss/variables";
-
 .default {
     border: none;
     outline: none;
@@ -11,5 +9,5 @@
     box-shadow: 0 4px 3px -3px rgba(0,0,0,0.36);
     outline: none;
     cursor: pointer;
-    background: $red;
+    background: #f36565;
 }

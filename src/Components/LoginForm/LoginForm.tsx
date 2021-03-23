@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from 'react';
 import {FormikErrors, useFormik} from 'formik';
-import SuperInputText from '../Input/SuperInputText';
-import SuperButton from '../Button/SuperButton';
+import Input from '../Input/Input';
+import {Button} from '../Button/Button';
 
 import s from './LoginForm.module.scss'
 
@@ -43,7 +43,7 @@ const validate = (values: FormValues) => {
     return errors;
 }
 
-export const LoginForm: React.FC<OtherProps> = ({callback}) => {
+export const LoginForm: React.FC<OtherProps> = React.memo(({callback}) => {
 
     const formik = useFormik({
         initialValues: {
@@ -59,14 +59,14 @@ export const LoginForm: React.FC<OtherProps> = ({callback}) => {
     });
 
     const renderInput = (id: string, name: string, type: string, className: string, error: string | undefined, onChange: (e: ChangeEvent) => void, value: number | string, placeholder?: string) => {
-        return <SuperInputText id={id}
-                               name={name}
-                               type={type}
-                               className={className}
-                               error={error}
-                               onChange={onChange}
-                               value={value}
-                               placeholder={placeholder}
+        return <Input id={id}
+                      name={name}
+                      type={type}
+                      className={className}
+                      error={error}
+                      onChange={onChange}
+                      value={value}
+                      placeholder={placeholder}
         />
     }
 
@@ -86,13 +86,13 @@ export const LoginForm: React.FC<OtherProps> = ({callback}) => {
                     {renderInput('password', 'password', 'text', s.input, formik.errors.password, formik.handleChange, formik.values.password, 'Enter Password')}
 
                     <div className={s.form_btn_wrapper}>
-                        <SuperButton type="submit" className={s.form_btn}>Log in</SuperButton>
+                        <Button type="submit" className={s.form_btn}>Log in</Button>
                     </div>
                 </form>
             </div>
         </div>
     )
-}
+})
 
 
 

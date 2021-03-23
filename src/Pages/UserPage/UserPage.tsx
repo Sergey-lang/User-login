@@ -1,30 +1,30 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAuthUserData, logout} from '../LoginPage/auth-reducer';
 import {selectorAppError, selectorIsLogged, selectorRequestStatus, selectorUserData} from './selectors';
-import SuperButton from '../../u-4-components/Button/SuperButton';
-import Preloader from '../../u-4-components/Preloader/Preloader';
-import Error from '../../u-4-components/Error/Error';
-import {Redirect} from 'react-router-dom';
-import {PATH} from '../../u-1-app/App';
-
+import {Button} from '../../Components/Button/Button';
+import {Preloader} from '../../Components/Preloader/Preloader';
+import {Error} from '../../Components/Error/Error';
+import {getAuthUserData, logout} from '../../redux/auth-reducer';
 import s from './UserPage.module.scss'
+import {Redirect} from 'react-router-dom';
+import {PATH} from '../../App/App';
 
-export const UserPage: React.FC = () => {
+export const UserPage: React.FC = React.memo(() => {
+
     const {email, name} = useSelector(selectorUserData)
     const status = useSelector(selectorRequestStatus)
     const error = useSelector(selectorAppError)
     const isLoggedIn = useSelector(selectorIsLogged)
 
-    const logoutHandler = () => {
+    const logoutHandler = useCallback(() => {
         dispatch(logout())
-    }
+    },[])
 
     const dispatch = useDispatch()
+
     useEffect(() => {
-        if (isLoggedIn)
-            dispatch(getAuthUserData())
-    }, [isLoggedIn, dispatch]);
+        dispatch(getAuthUserData())
+    }, []);
 
     if (!isLoggedIn) {
         return <Redirect to={PATH.LOGIN}/>
@@ -42,7 +42,7 @@ export const UserPage: React.FC = () => {
                     {
                         isLoggedIn && (
                             <div className={s.logout_btn_wrapper}>
-                                <SuperButton onClick={logoutHandler} className={s.logout_btn}>LOGOUT</SuperButton>
+                                <Button onClick={logoutHandler} className={s.logout_btn}>LOGOUT</Button>
                             </div>)
                     }
                     {error && <Error error={error}/>}
@@ -50,5 +50,5 @@ export const UserPage: React.FC = () => {
             }
         </div>
     );
-}
+});
 

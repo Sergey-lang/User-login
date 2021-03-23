@@ -5,12 +5,11 @@ type PropsType = {
     error: string
 }
 
-const Error: React.FC<PropsType> = ({error}) => {
+export const Error: React.FC<PropsType> = React.memo(({error}) => {
     return (
         <div className={s.error_wrapper}>
             <div className={s.error}>{error ? error : ''}</div>
         </div>
     )
-}
+});
 
-export default Error;

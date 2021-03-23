@@ -1,4 +1,4 @@
-import {AppStateType} from '../../u-1-app/store';
+import {AppStateType} from '../../redux/store';
 
 export const selectorUserData= (state: AppStateType) => state.authState.user
 export const selectorIsLogged = (state: AppStateType) => state.authState.isLoggedIn

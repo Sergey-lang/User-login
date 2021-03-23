@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
-import {LoginPage} from '../u-3-pages/LoginPage/LoginPage';
-import {UserPage} from '../u-3-pages/UserPage/UserPage';
-import {useDispatch, useSelector} from 'react-redux';
-import {selectorIsLogged} from '../u-3-pages/UserPage/selectors';
-import {setIsLoggedIn} from '../u-3-pages/LoginPage/auth-reducer';
+import {LoginPage} from '../Pages/LoginPage/LoginPage';
+import {UserPage} from '../Pages/UserPage/UserPage';
+import {useDispatch} from 'react-redux';
+import {getAuthUserData} from '../redux/auth-reducer';
 
 import s from './App.module.scss'
 
@@ -14,14 +13,14 @@ export const PATH = {
 }
 
 export const App: React.FC = () => {
-    const isLoggedIn = useSelector(selectorIsLogged)
 
     const dispatch = useDispatch()
     useEffect(() => {
         if (localStorage.getItem('accessToken')) {
-            dispatch(setIsLoggedIn(true))
+            //check valid token
+            dispatch(getAuthUserData())
         }
-    }, [isLoggedIn,dispatch])
+    }, [])
 
     return (
         <div className={s.app}>
@@ -34,4 +33,4 @@ export const App: React.FC = () => {
             </div>
         </div>
     );
-}
+};

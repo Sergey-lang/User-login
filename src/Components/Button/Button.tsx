@@ -1,5 +1,5 @@
 import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react';
-import s from './SuperButton.module.scss';
+import s from './Button.module.scss';
 
 type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
 
@@ -7,7 +7,7 @@ type SuperButtonPropsType = DefaultButtonPropsType & {
     red?: boolean
 }
 
-const SuperButton: React.FC<SuperButtonPropsType> = (
+export const Button: React.FC<SuperButtonPropsType> = React.memo((
     {
         red, className,
         ...restProps
@@ -20,6 +20,5 @@ const SuperButton: React.FC<SuperButtonPropsType> = (
                 {...restProps}
         />
     );
-}
+})
 
-export default SuperButton;

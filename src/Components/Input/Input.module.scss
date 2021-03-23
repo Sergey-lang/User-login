@@ -1,5 +1,3 @@
-@import "src/scss/variables";
-
 .input_wrapper {
     display: flex;
     flex-direction: column;
@@ -12,7 +10,7 @@
 
     .spanError {
         padding-top: 5px;
-        color: $red;
+        color: #f36565;
         font-size: 12px;
         text-align: center;
         font-weight: bold;

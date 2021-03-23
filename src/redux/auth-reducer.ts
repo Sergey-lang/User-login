@@ -1,7 +1,7 @@
 import {ThunkDispatch} from 'redux-thunk';
-import {setAppError, setAppStatus} from '../../u-1-app/app-reducer';
-import {authAPI} from '../../u-2-api/auth-api';
-import {AppStateType} from '../../u-1-app/store';
+import {setAppError, setAppStatus} from './app-reducer';
+import {authAPI} from '../API/auth-api';
+import {AppStateType} from './store';
 
 export type UserType = {
     name: string,
@@ -37,13 +37,9 @@ export const getAuthUserData = () => async (dispatch: ThunkDispatch<AppStateType
     dispatch(setAppStatus('loading'))
     try {
         const res = await authAPI.getUser()
-        if (res.status === 200) {
-            dispatch(setUserData(res.data.data));
-            dispatch(setIsLoggedIn(true));
-            dispatch(setAppStatus('succeeded'));
-        } else {
-            dispatch(setAppStatus('failed'));
-        }
+        dispatch(setUserData(res.data.data));
+        dispatch(setIsLoggedIn(true));
+        dispatch(setAppStatus('succeeded'));
     } catch (e) {
         dispatch(setAppError(e.message))
         dispatch(setAppStatus('failed'));
@@ -55,17 +51,10 @@ export const login = (clientId: number, email: string, password: string) =>
         dispatch(setAppStatus('loading'))
         try {
             const res = await authAPI.login(clientId, email, password)
-            if (res.status === 200) {
-                localStorage.setItem('accessToken', res.data.data.accessToken);
-                localStorage.setItem('refreshToken', res.data.data.refreshToken);
-                await dispatch(getAuthUserData());
-                dispatch(setIsLoggedIn(true));
-                dispatch(setAppError(''));
-                return
-            } else {
-                dispatch(setAppStatus('failed'));
-                return
-            }
+            localStorage.setItem('accessToken', res.data.data.accessToken);
+            localStorage.setItem('refreshToken', res.data.data.refreshToken);
+            dispatch(setIsLoggedIn(true));
+            dispatch(setAppError(''));
         } catch (e) {
             dispatch(setAppError(e.message))
             dispatch(setAppStatus('failed'));
@@ -75,14 +64,12 @@ export const login = (clientId: number, email: string, password: string) =>
 export const logout = () => async (dispatch: ThunkDispatch<AppStateType, unknown, ActionsType>) => {
     dispatch(setAppStatus('loading'))
     try {
-        const res = await authAPI.logout()
-        if (res.status === 200) {
-            localStorage.removeItem('accessToken')
-            localStorage.removeItem('refreshToken')
-            dispatch(setIsLoggedIn(false))
-            dispatch(setAppError(''))
-            dispatch(setAppStatus('succeeded'));
-        }
+        await authAPI.logout()
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
+        dispatch(setAppStatus('succeeded'));
+        dispatch(setIsLoggedIn(false))
+        dispatch(setAppError(''))
     } catch (e) {
         dispatch(setAppError(e.message))
         dispatch(setAppStatus('failed'));
