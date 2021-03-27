@@ -13,5 +13,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `GH PAGES DEMO`
 
-You can watch the demo app [demo app](https://sergey-lang.github.io/user_login/)
+You can watch the demo app [demo app](https://sergey-lang.github.io/User-login/)
 
